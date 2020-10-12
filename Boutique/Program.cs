@@ -29,7 +29,7 @@ namespace Boutique
 
             for (int i = 0; i < antal; i++)
             {
-                Plagg plagg = default;
+                //Plagg plagg = default;
 
                 Console.WriteLine("Välj vilken sorts plagg du vill lägga till: ");
                 Console.WriteLine("[1] Pants");
@@ -38,7 +38,7 @@ namespace Boutique
                 Console.WriteLine("[4] Scarf");
                 int type = int.Parse(Console.ReadLine());
                 //plagg.Kind = Enum.GetName(typeof(Kind), type);
-                plagg.Kind = (Type)type;
+                //plagg.Kind = (Type)type;
 
                 Console.WriteLine("Välj storlek på plagget: ");
                 Console.WriteLine("[1] XS");
@@ -48,7 +48,7 @@ namespace Boutique
                 Console.WriteLine("[5] XL");
                 int size = int.Parse(Console.ReadLine());
                 //plagg.Size = Enum.GetName(typeof(Size), size);
-                plagg.Size = (Sizes)size;
+                //plagg.Size = (Sizes)size;
 
                 Console.WriteLine("Välj färg på plagget: ");
                 Console.WriteLine("[1] Blue");
@@ -57,7 +57,7 @@ namespace Boutique
                 Console.WriteLine("[4] White");
                 int color = int.Parse(Console.ReadLine());
                 //plagg.Color = Enum.GetName(typeof(Color), color);
-                plagg.Color = (Colors)color;
+                //plagg.Color = (Colors)color;
 
                 Console.WriteLine("Välj pris på plagget: ");
                 Console.WriteLine("[100] One Hundred");
@@ -66,9 +66,9 @@ namespace Boutique
                 Console.WriteLine("[400] Four Hundred");
                 int price = int.Parse(Console.ReadLine());
                 //plagg.Price = Enum.GetName(typeof(Price), price);
-                plagg.Price = (Prices)price;
+                //plagg.Price = (Prices)price;
 
-                Butik.Add(plagg);
+                Butik.Add(new Plagg(type, size, color, price));
             }
         }
         static void PrintBoutique()
