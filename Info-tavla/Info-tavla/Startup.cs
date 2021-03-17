@@ -24,7 +24,7 @@ namespace Info_tavla
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddHttpClient();
+            services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinutes(30); });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +41,7 @@ namespace Info_tavla
                 app.UseHsts();
             }
 
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

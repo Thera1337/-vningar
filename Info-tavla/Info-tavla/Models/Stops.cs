@@ -1,6 +1,11 @@
-﻿namespace Info_tavla.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Info_tavla.Models
 {
-    public class Transport
+    public class Stops
     {
         public int StatusCode { get; set; }
         public object Message { get; set; }

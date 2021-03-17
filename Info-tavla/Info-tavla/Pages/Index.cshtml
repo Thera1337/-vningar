@@ -6,5 +6,69 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    
+
+    <div>
+        <h3>Lokaltrafik</h3>
+        <p>Bussar från Saltskog Centrum</p>
+        @*<form method="get">
+            <input type="text" id="location" name="location" />
+            <input type="submit" value="Sök" />
+        </form>*@
+
+        @*@foreach (var hpl in Model.hpl.ResponseData)
+        {
+            <a href="?siteid=@hpl.SiteId">@hpl.Name</a><br />
+        }*@
+
+        <table class="text-center">
+            @if (Model.departure.ResponseData != null)
+            {
+                foreach (var bus in Model.departure.ResponseData.Buses)
+                {
+                    <tr>
+                        <td>Linje: </td>
+                        <td>
+                            @bus.LineNumber
+                        </td>
+                        <td>Avgår: </td>
+                        <td>
+                            @bus.DisplayTime
+                        </td>
+                        <td>Mot: </td>
+                        <td>
+                            @bus.Destination
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+    <div>
+        <h3>Vädret just nu</h3>
+        <p>Södertälje</p>
+
+        <table class="text-center">
+            <td>
+                @Model.weather.timeSeries.FirstOrDefault(z => z.validTime.Date == DateTime.Now.Date && z.validTime.Hour == DateTime.Now.Hour).parameters.FirstOrDefault(z => z.name == "t").values[0]C <br />
+            </td>
+            <td>
+                Min: @Model.weather.timeSeries.FirstOrDefault(z => z.validTime.Date == DateTime.Now.Date && z.validTime.Hour == DateTime.Now.Hour).parameters.FirstOrDefault(z => z.name == "pmin").values[0] mm/h nederbörd <br />
+            </td>
+            <td>
+                Max: @Model.weather.timeSeries.FirstOrDefault(z => z.validTime.Date == DateTime.Now.Date && z.validTime.Hour == DateTime.Now.Hour).parameters.FirstOrDefault(z => z.name == "pmax").values[0] mm/h nederbörd
+            </td>
+        </table>
+    </div>
+
+    <div>
+        <h3>Nyheter</h3>
+        <p>Nyheter från Sveries Radio</p>
+
+        <table class="text-center">
+            <td>
+                @Model.news.programs.FirstOrDefault().name;
+            </td>
+        </table>
+    </div>
 </div>

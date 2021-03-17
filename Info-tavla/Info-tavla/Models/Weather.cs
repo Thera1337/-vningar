@@ -7,61 +7,27 @@ namespace Info_tavla.Models
 {
     public class Weather
     {
-		public string key { get; set; }
-		public string title { get; set; }
-		public string summary { get; set; }
-		public Alert[] alerts { get; set; }
-		public Message[] messages { get; set; }
-		public Districtview[] districtviews { get; set; }
-		public Metadata[] metadata { get; set; }
-	}
-
-	public class Alert
-	{
-		public string type { get; set; }
-		public string href { get; set; }
-	}
-
-	public class Message
-	{
-		public string type { get; set; }
-		public string href { get; set; }
-	}
-
-	public class Districtview
-	{
-		public string key { get; set; }
-		public Type[] types { get; set; }
-	}
-
-	public class Type
-	{
-		public string type { get; set; }
-		public string href { get; set; }
-	}
-
-	public class Metadata
-	{
-		public Meteorology[] meteorology { get; set; }
-		public Hydrology[] hydrology { get; set; }
-		public Oceanography[] oceanography { get; set; }
-	}
-
-	public class Meteorology
-	{
-		public string type { get; set; }
-		public string href { get; set; }
-	}
-
-	public class Hydrology
-	{
-		public string type { get; set; }
-		public string href { get; set; }
-	}
-
-	public class Oceanography
-	{
-		public string type { get; set; }
-		public string href { get; set; }
-	}
+        public DateTime approvedTime { get; set; }
+        public DateTime referenceTime { get; set; }
+        public Geometry geometry { get; set; }
+        public Timesery[] timeSeries { get; set; }
+    }
+    public class Geometry
+    {
+        public string type { get; set; }
+        public float[][] coordinates { get; set; }
+    }
+    public class Timesery
+    {
+        public DateTime validTime { get; set; }
+        public Parameter[] parameters { get; set; }
+    }
+    public class Parameter
+    {
+        public string name { get; set; }
+        public string levelType { get; set; }
+        public int level { get; set; }
+        public string unit { get; set; }
+        public float[] values { get; set; }
+    }
 }
